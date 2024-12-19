@@ -5,4 +5,4 @@ ls -la
 echo "Installing requirements..."
 pip install -r requirements.txt
 echo "Starting bot..."
-python3 -m src.app 
+python3 app.py
