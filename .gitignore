@@ -1,8 +1,11 @@
 # Environment variables
 .env
+.env.*
+!.env.example
 
 # Database
 *.db
+*.db-journal
 backups/
 
 # Python
@@ -30,6 +33,7 @@ wheels/
 # Logs
 *.log
 logs/
+bot.log
 
 # IDE
 .idea/
@@ -39,6 +43,7 @@ logs/
 
 # Virtual Environment
 venv/
+.venv/
 env/
 ENV/
 
