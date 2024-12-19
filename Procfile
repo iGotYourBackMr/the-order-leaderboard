@@ -1,1 +1,1 @@
-worker: python3 /home/container/app.py 
+worker: bash start.sh 
