@@ -1,14 +1,9 @@
-# Environment variables and secrets
+# Environment variables
 .env
-.env.*
-!.env.example
 
-# Database files
+# Database
 *.db
-*.db-journal
 backups/
-*.sqlite
-*.sqlite3
 
 # Python
 __pycache__/
@@ -32,33 +27,21 @@ wheels/
 .installed.cfg
 *.egg
 
-# Logs and debugging
+# Logs
 *.log
 logs/
-debug/
-npm-debug.log*
 
-# IDE specific files
+# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
-.project
-.classpath
-.settings/
 
 # Virtual Environment
 venv/
 env/
 ENV/
-.env/
-.venv/
 
-# OS generated files
+# OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db 
