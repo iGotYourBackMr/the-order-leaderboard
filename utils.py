@@ -180,22 +180,29 @@ def create_leaderboard_embed(guild: discord.Guild, users: List[User], page: int 
     
     for idx, user in enumerate(page_users, start=start_idx + 1):
         member = guild.get_member(int(user.discord_id))
-        if not member:
-            continue
+        
+        # Handle users who have left the server
+        if member:
+            display_name = member.display_name
+            left_indicator = ""
+        else:
+            display_name = f"User left server (ID: {user.discord_id})"
+            left_indicator = "👋 "  # Add waving hand emoji for users who left
         
         trophy = "🥇" if idx == 1 else "🥈" if idx == 2 else "🥉" if idx == 3 else ""
         badges = [ub.badge.emoji for ub in user.badges]
         badge_str = " ".join(badges) if badges else ""
         
-        # Get user's roles and check for special roles
-        roles = [role.name for role in member.roles]
+        # Get user's roles and check for special roles (only if user is still in server)
         special_emoji = ""
-        if "Night Owl 🦉" in roles:
-            special_emoji = "🦉"
-        elif "Early Bird 🐦" in roles:
-            special_emoji = "🐦"
+        if member:
+            roles = [role.name for role in member.roles]
+            if "Night Owl 🦉" in roles:
+                special_emoji = "🦉"
+            elif "Early Bird 🐦" in roles:
+                special_emoji = "🐦"
         
-        name = f"{trophy}#{idx} {member.display_name} {special_emoji} {badge_str}"
+        name = f"{left_indicator}{trophy}#{idx} {display_name} {special_emoji} {badge_str}"
         value = (
             f"Total Messages: **{user.total_messages}**\n"
             f"Last 24 hours: **{getattr(user, 'recent_messages', 0)}**\n"
